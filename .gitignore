@@ -1,0 +1,8 @@
+#Исключим директорию __pycache__ :
+node_modules_/
+#Исключим сам файл .gitignore:
+.gitignore
+.idea/
+node_modules/
+
+
