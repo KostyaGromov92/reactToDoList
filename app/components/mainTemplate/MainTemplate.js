@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import Notes from '../notes/Notes'
 import './main-style.sass'
+import * as notesAction from '../notes/NotestActions';
 
 class MainTemplate extends Component {
 
@@ -73,4 +75,18 @@ class MainTemplate extends Component {
   }
 }
 
-export default MainTemplate;
+function mapStateToProps(state) {
+  return {
+    ...state,
+    arr: state.notesReducer,
+
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    contractPermissionsActions: bindActionCreators(notesAction, dispatch),
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MainTemplate);
