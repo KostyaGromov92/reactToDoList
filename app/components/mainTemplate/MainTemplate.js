@@ -26,9 +26,13 @@ class MainTemplate extends Component {
     });
   }
 
-  render() {
+  addNotes(){
+    this.setState({
+      arr: this.state.arr.concat({title: this.state.title, description: this.state.description})
+    })
+  }
 
-    const {title, description} = this.props;
+  render() {
 
     return (
         <div>
@@ -50,14 +54,26 @@ class MainTemplate extends Component {
               />
             </div>
             <div className="wrapper-buttons">
-              <button className="btn-save">Add note</button>
+              <button onClick={this.addNotes.bind(this)} className="btn-save">Add note</button>
             </div>
           </div>
           <div className="notes-wrapper">
             <Notes
-                title={{}}
-                description={{}}
+                title="Title notes"
+                description="Title description"
             />
+          </div>
+          <div className="wrapper-notes">
+              {this.state.arr && this.state.arr.map((item, index) => {
+                return (
+                    <div key={index} className="notes-item">
+                      <h4 className="notes-title">{item.title}</h4>
+                      <div className="notes-text">
+                        {item.description}
+                      </div>
+                    </div>
+                )
+              })}
           </div>
         </div>
     );
