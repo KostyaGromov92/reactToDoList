@@ -14,11 +14,11 @@ class MainTemplate extends Component {
     }
   }
 
-  changeTitle(e) {
+  changeTitle = (e) => {
     this.setState({
       title: e.target.value
     });
-  }
+  };
 
   changeDescription(e) {
     this.setState({
@@ -28,7 +28,8 @@ class MainTemplate extends Component {
 
   addNotes(){
     this.setState({
-      arr: this.state.arr.concat({title: this.state.title, description: this.state.description})
+      // Can do another method : this.setState({ arr: [...this.state.arr, 'new item'] });
+      arr: [...this.state.arr.concat({title: this.state.title, description: this.state.description})],
     })
   }
 
@@ -40,7 +41,7 @@ class MainTemplate extends Component {
             <div className="wrapper-title">
               <input
                   type="text"
-                  onChange={this.changeTitle.bind(this)}
+                  onChange={this.changeTitle}
                   value={this.state.title}
                   className="input-title"
               />
