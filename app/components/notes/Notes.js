@@ -1,26 +1,24 @@
-import React, {Component} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 
-class Notes extends Component {
-
-  render() {
-
-    const {title, description} = this.props;
-
-    return (
-        <div>
-          <h1>From notes</h1>
-          <h3>{title}</h3>
-          {description}
-        </div>
-    )
-  }
-}
+const Notes = (props) => (
+    <div className="wrapper-notes">
+      {props.arr && props.arr.map((item, index) => {
+        return (
+            <div key={index} className="notes-item">
+              <h4 className="notes-title">{item.title}</h4>
+              <div className="notes-text">
+                {item.description}
+              </div>
+            </div>
+        )
+      })}
+    </div>
+);
 
 Notes.propTypes = {
-  title: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
+  arr: PropTypes.array.isRequired,
 };
 
 export default Notes;

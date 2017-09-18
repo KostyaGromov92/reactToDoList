@@ -20,18 +20,25 @@ class MainTemplate extends Component {
     });
   };
 
-  changeDescription(e) {
+  changeDescription = (e) => {
     this.setState({
       description: e.target.value
     });
-  }
+  };
 
-  addNotes(){
-    this.setState({
-      // Can do another method : this.setState({ arr: [...this.state.arr, 'new item'] });
-      arr: [...this.state.arr.concat({title: this.state.title, description: this.state.description})],
-    })
-  }
+  addNotes = () => {
+
+    if(this.state.title !== '' && this.state.description !== '') {
+      this.setState({
+        // Can do another method : this.setState({ arr: [...this.state.arr, 'new item'] });
+        arr: [...this.state.arr.concat({title: this.state.title, description: this.state.description})],
+        title: '',
+        description: '',
+      });
+    } else {
+      return false;
+    }
+  };
 
   render() {
 
@@ -50,32 +57,17 @@ class MainTemplate extends Component {
               <textarea
                   name="description"
                   className="task-description"
-                  onChange={this.changeDescription.bind(this)}
+                  onChange={this.changeDescription}
                   value={this.state.description}
               />
             </div>
             <div className="wrapper-buttons">
-              <button onClick={this.addNotes.bind(this)} className="btn-save">Add note</button>
+              <button onClick={this.addNotes} className="btn-save">Add note</button>
             </div>
           </div>
-          <div className="notes-wrapper">
-            <Notes
-                title="Title notes"
-                description="Title description"
-            />
-          </div>
-          <div className="wrapper-notes">
-              {this.state.arr && this.state.arr.map((item, index) => {
-                return (
-                    <div key={index} className="notes-item">
-                      <h4 className="notes-title">{item.title}</h4>
-                      <div className="notes-text">
-                        {item.description}
-                      </div>
-                    </div>
-                )
-              })}
-          </div>
+          <Notes
+              arr={this.state.arr}
+          />
         </div>
     );
   }
