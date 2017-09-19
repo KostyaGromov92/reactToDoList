@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import Notes from '../notes/Notes'
 import './main-style.sass'
 import * as notesAction from '../notes/NotestActions';
+import Particles from 'react-particles-js';
 
 class MainTemplate extends Component {
 
@@ -31,6 +32,7 @@ class MainTemplate extends Component {
   addNotes = () => {
     if(this.state.title !== '' && this.state.description !== '') {
 
+      //{title: this.state.title, description: this.state.description} - это будет доступно в нашем actions, в свойстве payload
       this.props.notesActions.addNewNote({title: this.state.title, description: this.state.description});
 
       this.setState({
@@ -54,6 +56,7 @@ class MainTemplate extends Component {
                   onChange={this.changeTitle}
                   value={this.state.title}
                   className="input-title"
+                  placeholder="Please enter note title"
               />
             </div>
             <div className="wrapper-description">
@@ -62,6 +65,7 @@ class MainTemplate extends Component {
                   className="task-description"
                   onChange={this.changeDescription}
                   value={this.state.description}
+                  placeholder="Please enter note description"
               />
             </div>
             <div className="wrapper-buttons">
@@ -79,14 +83,13 @@ class MainTemplate extends Component {
 function mapStateToProps(state) {
   return {
     ...state,
-    notes: state.notesReducer,
-
+    notes: state.notesReducer, // наш reducer
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    notesActions: bindActionCreators(notesAction, dispatch),
+    notesActions: bindActionCreators(notesAction, dispatch), // наш action
   };
 }
 

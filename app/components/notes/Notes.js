@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import './notes.sass'
 
 const Notes = (props) => (
     <div className="wrapper-notes">

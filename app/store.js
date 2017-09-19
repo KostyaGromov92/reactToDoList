@@ -5,7 +5,7 @@ import {createLogger} from 'redux-logger';
 
 const middleware = [thunkMiddleware];
 
-if (process.env.NODE_ENV !== 'production') {
+if (process.env.NODE_ENV !== 'production') { // окружение приложения - "production", "development", или "test
 
   const logger = createLogger({
     level: 'info',
