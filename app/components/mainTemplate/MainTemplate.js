@@ -29,9 +29,12 @@ class MainTemplate extends Component {
     });
   };
 
+  editNote = (e) => {
+
+  };
+
   addNotes = () => {
     if(this.state.title !== '' && this.state.description !== '') {
-
       //{title: this.state.title, description: this.state.description} - это будет доступно в нашем actions, в свойстве payload
       this.props.notesActions.addNewNote({title: this.state.title, description: this.state.description});
 
@@ -46,6 +49,8 @@ class MainTemplate extends Component {
   };
 
   render() {
+
+    const {notes} = this.props;
 
     return (
         <div>
@@ -74,6 +79,7 @@ class MainTemplate extends Component {
           </div>
           <Notes
               arr={this.props.notes.arr}
+              onClickEdit={() => {alert(1)}}
           />
         </div>
     );

@@ -72,11 +72,16 @@
         outline: none
 
 .wrapper-notes
-  display: flex
-  justify-content: center
+  //display: flex
+  //justify-content: center
+  //width: 90%
+  //margin: 30px auto 0
+  //flex-wrap: wrap
+  display: grid
+  grid-template-columns: repeat(4, 250px)
+  grid-gap: 1.2rem
   width: 90%
   margin: 30px auto 0
-  flex-wrap: wrap
   .notes-item
     font-family: 'Asap', sans-serif
     background: yellow
@@ -84,6 +89,5 @@
     height: 250px
     text-align: center
     box-shadow: 0 0 10px rgba(30, 34, 25, 0.8)
-    margin: 0 30px 30px
   .notes-title
     text-transform: uppercase

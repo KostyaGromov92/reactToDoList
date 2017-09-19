@@ -11,6 +11,9 @@ const Notes = (props) => (
               <div className="notes-text">
                 {item.description}
               </div>
+              <div className="notes-edit">
+                <button onClick={props.onClickEdit} className="btn-edit-note">Edit</button>
+              </div>
             </div>
         )
       })}
@@ -19,6 +22,7 @@ const Notes = (props) => (
 
 Notes.propTypes = {
   arr: PropTypes.array.isRequired,
+  onClickEdit: PropTypes.func
 };
 
 export default Notes;
