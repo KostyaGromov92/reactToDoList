@@ -1,7 +1,8 @@
 import {notesActionsType} from './NotesConstants';
-import _ from 'lodash';
 
 const initialState = {
+  title: '',
+  description: '',
   arr: []
 };
 
@@ -10,7 +11,7 @@ export default function notesReducer(state = initialState, action) {
     case notesActionsType.ADD_NEW_NOTE:
       return {
           ...state,
-          arr: action.payload
+          arr: [...state.arr.concat(action.payload)],
       };
 
     default:

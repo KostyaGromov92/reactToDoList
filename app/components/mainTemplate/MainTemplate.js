@@ -29,14 +29,15 @@ class MainTemplate extends Component {
   };
 
   addNotes = () => {
-
     if(this.state.title !== '' && this.state.description !== '') {
+
+      this.props.notesActions.addNewNote({title: this.state.title, description: this.state.description});
+
       this.setState({
-        // Can do another method : this.setState({ arr: [...this.state.arr, 'new item'] });
-        arr: [...this.state.arr.concat({title: this.state.title, description: this.state.description})],
         title: '',
         description: '',
       });
+
     } else {
       return false;
     }
@@ -68,7 +69,7 @@ class MainTemplate extends Component {
             </div>
           </div>
           <Notes
-              arr={this.state.arr}
+              arr={this.props.notes.arr}
           />
         </div>
     );
@@ -78,14 +79,14 @@ class MainTemplate extends Component {
 function mapStateToProps(state) {
   return {
     ...state,
-    arr: state.notesReducer,
+    notes: state.notesReducer,
 
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    contractPermissionsActions: bindActionCreators(notesAction, dispatch),
+    notesActions: bindActionCreators(notesAction, dispatch),
   };
 }
 
