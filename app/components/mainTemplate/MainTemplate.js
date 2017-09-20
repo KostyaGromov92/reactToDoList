@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Notes from '../notes/Notes'
@@ -29,8 +30,13 @@ class MainTemplate extends Component {
     });
   };
 
-  editNote = (e) => {
-
+  editNote = () => {
+    this.props.notes.arr.map((item) => {
+      this.setState({
+        title: item.title,
+        description: item.description
+      });
+    });
   };
 
   addNotes = () => {
@@ -78,8 +84,8 @@ class MainTemplate extends Component {
             </div>
           </div>
           <Notes
-              arr={this.props.notes.arr}
-              onClickEdit={() => {alert(1)}}
+              arr={notes.arr}
+              onClickEdit={this.editNote}
           />
         </div>
     );
