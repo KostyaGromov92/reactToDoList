@@ -12,7 +12,7 @@ const Notes = (props) => (
                 {item.description}
               </div>
               <div className="notes-edit">
-                <button onClick={props.onClickEdit} className="btn-edit-note">Edit</button>
+                <button onClick={props.onClickDelete} className="btn-delete-note">Delete</button>
               </div>
             </div>
         )
@@ -22,7 +22,8 @@ const Notes = (props) => (
 
 Notes.propTypes = {
   arr: PropTypes.array.isRequired,
-  onClickEdit: PropTypes.func
+  onClickEdit: PropTypes.func,
+  onClickDelete: PropTypes.func
 };
 
 export default Notes;

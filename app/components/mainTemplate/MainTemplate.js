@@ -30,18 +30,21 @@ class MainTemplate extends Component {
     });
   };
 
-  editNote = () => {
-    this.props.notes.arr.map((item) => {
-      this.setState({
-        title: item.title,
-        description: item.description
-      });
+  deleteNote = (e) => {
+    this.props.notes.arr.map((item,index) => {
+
+      // // this.setState({
+      // [...state.arr.concat(action.payload)]
+      // //   arr: [...state.arr.concat(action.payload)].splice(index, 1)
+      // // });
+      console.log(index);
     });
+
+
   };
 
   addNotes = () => {
     if(this.state.title !== '' && this.state.description !== '') {
-      //{title: this.state.title, description: this.state.description} - это будет доступно в нашем actions, в свойстве payload
       this.props.notesActions.addNewNote({title: this.state.title, description: this.state.description});
 
       this.setState({
@@ -85,7 +88,7 @@ class MainTemplate extends Component {
           </div>
           <Notes
               arr={notes.arr}
-              onClickEdit={this.editNote}
+              onClickDelete={this.deleteNote}
           />
         </div>
     );
