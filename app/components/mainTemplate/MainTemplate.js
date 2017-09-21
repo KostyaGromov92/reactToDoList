@@ -1,17 +1,17 @@
 import React, {Component} from 'react';
-import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Notes from '../notes/Notes'
 import './main-style.sass'
 import * as notesAction from '../notes/NotestActions';
-import Particles from 'react-particles-js';
+
 
 class MainTemplate extends Component {
 
   constructor(props) {
     super(props);
   }
+
 
   changeTitle = (e) => {
     this.props.notesActions.changeField('title', e.target.value);
@@ -35,7 +35,15 @@ class MainTemplate extends Component {
     }
   };
 
+  deleteNote = (e) => {
+    const {notesActions} = this.props;
+
+    notesActions.updateArrayAfterDeleteNote(e.target.dataset.attr);
+  };
+
   render() {
+
+    const {notes} = this.props;
 
     return (
         <div>
@@ -44,7 +52,7 @@ class MainTemplate extends Component {
               <input
                   type="text"
                   onChange={this.changeTitle}
-                  value={this.props.notes.note.title}
+                  value={notes.note.title}
                   className="input-title"
                   placeholder="Please enter note title"
               />
@@ -54,7 +62,7 @@ class MainTemplate extends Component {
                   name="description"
                   className="task-description"
                   onChange={this.changeDescription}
-                  value={this.props.notes.note.description}
+                  value={notes.note.description}
                   placeholder="Please enter note description"
               />
             </div>
@@ -63,7 +71,7 @@ class MainTemplate extends Component {
             </div>
           </div>
           <Notes
-              arr={this.props.notes.arr}
+              arr={notes.arr}
               onClickDelete={this.deleteNote}
           />
         </div>

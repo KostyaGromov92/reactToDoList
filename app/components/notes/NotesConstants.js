@@ -5,5 +5,7 @@ export const notesActionsType = keyMirror(
       ADD_NEW_NOTE: null,
       CHANGE_FIELD_NAME: null,
       CLEAR_FORM: null,
+      NOTE_ID: null,
+      UPDATE_ARR_AFTER_DELETE: null,
     },
 );
