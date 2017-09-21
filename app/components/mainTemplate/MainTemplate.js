@@ -11,55 +11,31 @@ class MainTemplate extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      title: '',
-      description: '',
-      arr: []
-    }
   }
 
   changeTitle = (e) => {
-    this.setState({
-      title: e.target.value
-    });
+    this.props.notesActions.changeField('title', e.target.value);
+
   };
 
   changeDescription = (e) => {
-    this.setState({
-      description: e.target.value
-    });
+    this.props.notesActions.changeField('description', e.target.value);
   };
 
-  deleteNote = (e) => {
-    this.props.notes.arr.map((item,index) => {
-
-      // // this.setState({
-      // [...state.arr.concat(action.payload)]
-      // //   arr: [...state.arr.concat(action.payload)].splice(index, 1)
-      // // });
-      console.log(index);
-    });
-
-
-  };
 
   addNotes = () => {
-    if(this.state.title !== '' && this.state.description !== '') {
-      this.props.notesActions.addNewNote({title: this.state.title, description: this.state.description});
 
-      this.setState({
-        title: '',
-        description: '',
-      });
+    const {notes, notesActions} = this.props;
 
-    } else {
-      return false;
+    if(notes.note.title !== '' && notes.note.description !== '') {
+      notesActions.addNewNote({title: notes.note.title, description: notes.note.description});
+
+      notesActions.clearForm();
+
     }
   };
 
   render() {
-
-    const {notes} = this.props;
 
     return (
         <div>
@@ -68,7 +44,7 @@ class MainTemplate extends Component {
               <input
                   type="text"
                   onChange={this.changeTitle}
-                  value={this.state.title}
+                  value={this.props.notes.note.title}
                   className="input-title"
                   placeholder="Please enter note title"
               />
@@ -78,7 +54,7 @@ class MainTemplate extends Component {
                   name="description"
                   className="task-description"
                   onChange={this.changeDescription}
-                  value={this.state.description}
+                  value={this.props.notes.note.description}
                   placeholder="Please enter note description"
               />
             </div>
@@ -87,7 +63,7 @@ class MainTemplate extends Component {
             </div>
           </div>
           <Notes
-              arr={notes.arr}
+              arr={this.props.notes.arr}
               onClickDelete={this.deleteNote}
           />
         </div>

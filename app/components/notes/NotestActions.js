@@ -17,4 +17,17 @@ export function addNewNote(data) {
   }
 }
 
+export function changeField(fieldName, value) {
+  return {
+    type: notesActionsType.CHANGE_FIELD_NAME,
+    payload: {fieldName, value},
+  }
+}
+
+export function clearForm() {
+  return {
+    type: notesActionsType.CLEAR_FORM,
+  }
+}
+
 export default {addNewNote};
