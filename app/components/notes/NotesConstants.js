@@ -6,6 +6,6 @@ export const notesActionsType = keyMirror(
       CHANGE_FIELD_NAME: null,
       CLEAR_FORM: null,
       NOTE_ID: null,
-      UPDATE_ARR_AFTER_DELETE: null,
+      DELETE_NOTE: null,
     },
 );

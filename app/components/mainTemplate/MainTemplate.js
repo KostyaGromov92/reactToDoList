@@ -35,10 +35,10 @@ class MainTemplate extends Component {
     }
   };
 
-  deleteNote = (e) => {
+  deleteNote = (id) => {
     const {notesActions} = this.props;
 
-    notesActions.updateArrayAfterDeleteNote(e.target.dataset.attr);
+    notesActions.deleteNote(id);
   };
 
   render() {

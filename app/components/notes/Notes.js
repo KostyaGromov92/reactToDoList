@@ -7,13 +7,13 @@ const Notes = (props) => (
     <div className="wrapper-notes">
       {props.arr && props.arr.map((item, index) => {
         return (
-            <div key={index} className="notes-item" id={index}>
+            <div key={index} className="notes-item">
               <h4 className="notes-title">{item.title}</h4>
               <div className="notes-text">
                 {item.description}
               </div>
               <div className="notes-edit">
-                <button onClick={props.onClickDelete} data-attr={index} className="btn-delete-note">Delete</button>
+                <button onClick={() => props.onClickDelete(item.id)} className="btn-delete-note">Delete</button>
               </div>
             </div>
         )

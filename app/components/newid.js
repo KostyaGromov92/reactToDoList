@@ -1,6 +1,13 @@
-let lastId = 0;
+import _ from 'lodash';
 
-export default function(prefix='id') {
-  lastId++;
-  return `${prefix}${lastId}`;
+export default function(items) {
+
+  const maxItem = _.max(items, function (obj) {
+      return obj.id;
+  });
+  if (maxItem) {
+    return maxItem.id + 1;
+  } else {
+    return 0;
+  }
 }

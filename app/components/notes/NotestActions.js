@@ -30,9 +30,9 @@ export function clearForm() {
   }
 }
 
-export function updateArrayAfterDeleteNote(noteId) {
+export function deleteNote(noteId) {
   return {
-    type: notesActionsType.UPDATE_ARR_AFTER_DELETE,
+    type: notesActionsType.DELETE_NOTE,
     payload: noteId
   }
 }
@@ -43,4 +43,4 @@ export function generateId() {
   }
 }
 
-export default {addNewNote, clearForm, changeField, generateId, updateArrayAfterDeleteNote};
+export default {addNewNote, clearForm, changeField, generateId, deleteNote};
