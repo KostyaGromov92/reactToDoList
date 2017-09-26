@@ -6,7 +6,7 @@ export default function(items) {
       return obj.id;
   });
   if (maxItem) {
-    return maxItem.id + 1;
+    return maxItem.id++;
   } else {
     return 0;
   }

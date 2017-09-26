@@ -1,5 +1,6 @@
 import {notesActionsType} from './NotesConstants';
 import newid from '../newid';
+import _ from 'lodash';
 
 
 const initialState = {
@@ -8,7 +9,9 @@ const initialState = {
     title: '',
     description: ''
   },
-  arr: []
+  arr: [],
+  showUpdate: false,
+
 };
 
 export default function notesReducer(state = initialState, action) {
@@ -43,6 +46,13 @@ export default function notesReducer(state = initialState, action) {
         arr: [...state.arr.filter((el) => {
             return el.id !== action.payload;
         })]
+      };
+
+    case notesActionsType.UPDATE_NOTE:
+      return {
+        ...state,
+        note: state.arr.find(item => item.id === action.payload),
+        showUpdate: true,
       };
 
     default:

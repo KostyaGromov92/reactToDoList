@@ -37,10 +37,12 @@ export function deleteNote(noteId) {
   }
 }
 
-export function generateId() {
+export function updateNote(noteId) {
   return {
-    type: notesActionsType.NOTE_ID,
+    type: notesActionsType.UPDATE_NOTE,
+    payload: noteId
   }
 }
 
-export default {addNewNote, clearForm, changeField, generateId, deleteNote};
+
+export default {addNewNote, clearForm, changeField, updateNote, deleteNote};

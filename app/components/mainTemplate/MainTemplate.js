@@ -41,6 +41,16 @@ class MainTemplate extends Component {
     notesActions.deleteNote(id);
   };
 
+  updateNote = (id) => {
+    const {notesActions} = this.props;
+
+    notesActions.updateNote(id);
+  };
+
+  updateNotes = (note) => {
+
+  };
+
   render() {
 
     const {notes} = this.props;
@@ -67,12 +77,16 @@ class MainTemplate extends Component {
               />
             </div>
             <div className="wrapper-buttons">
-              <button onClick={this.addNotes} className="btn-save">Add note</button>
+              {notes.showUpdate
+                  ? <button onClick={this.updateNotes} className="btn-save">Update note</button>
+                  : <button onClick={this.addNotes} className="btn-save">Add note</button>
+              }
             </div>
           </div>
           <Notes
               arr={notes.arr}
               onClickDelete={this.deleteNote}
+              onClickUpdate={this.updateNote}
           />
         </div>
     );
