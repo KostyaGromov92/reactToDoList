@@ -44,5 +44,12 @@ export function updateNote(noteId) {
   }
 }
 
+export function updateNoteFromForm(note) {
+  return {
+    type: notesActionsType.UPDATE_NOTE_FROM_FORM,
+    payload: note
+  }
+}
 
-export default {addNewNote, clearForm, changeField, updateNote, deleteNote};
+
+export default {addNewNote, clearForm, changeField, updateNote, deleteNote, updateNoteFromForm};

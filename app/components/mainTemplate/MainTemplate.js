@@ -23,7 +23,7 @@ class MainTemplate extends Component {
   };
 
 
-  addNotes = () => {
+  addNote = () => {
 
     const {notes, notesActions} = this.props;
 
@@ -47,8 +47,12 @@ class MainTemplate extends Component {
     notesActions.updateNote(id);
   };
 
-  updateNotes = (note) => {
+  updateNoteFromForm = (note) => {
+    const {notesActions} = this.props;
 
+    notesActions.updateNoteFromForm(note);
+
+    notesActions.clearForm();
   };
 
   render() {
@@ -78,8 +82,8 @@ class MainTemplate extends Component {
             </div>
             <div className="wrapper-buttons">
               {notes.showUpdate
-                  ? <button onClick={this.updateNotes} className="btn-save">Update note</button>
-                  : <button onClick={this.addNotes} className="btn-save">Add note</button>
+                  ? <button onClick={() => this.updateNoteFromForm(notes.note)} className="btn-save">Update note</button>
+                  : <button onClick={this.addNote} className="btn-save">Add note</button>
               }
             </div>
           </div>

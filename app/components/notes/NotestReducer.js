@@ -39,7 +39,6 @@ export default function notesReducer(state = initialState, action) {
         }
       };
 
-
     case notesActionsType.DELETE_NOTE:
       return {
         ...state,
@@ -53,6 +52,18 @@ export default function notesReducer(state = initialState, action) {
         ...state,
         note: state.arr.find(item => item.id === action.payload),
         showUpdate: true,
+      };
+
+    case notesActionsType.UPDATE_NOTE_FROM_FORM:
+      return {
+        ...state,
+        arr: [...state.arr.map(item => {
+          if(item.id === action.payload.id) {
+            return {...action.payload}
+          }
+          return {...item};
+        })],
+        showUpdate: false,
       };
 
     default:

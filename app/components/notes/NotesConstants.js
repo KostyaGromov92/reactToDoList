@@ -8,5 +8,6 @@ export const notesActionsType = keyMirror(
       NOTE_ID: null,
       DELETE_NOTE: null,
       UPDATE_NOTE: null,
+      UPDATE_NOTE_FROM_FORM: null,
     },
 );
