@@ -23,7 +23,10 @@ class MainTemplate extends Component {
   };
 
   changeSearch = (e) => {
-    this.props.notesActions.changeField('search', e.target.value);
+    const {notesActions} = this.props;
+
+    notesActions.changeField('search', e.target.value);
+    notesActions.findNote(e.target.value);
   };
 
 
@@ -91,7 +94,14 @@ class MainTemplate extends Component {
               }
             </div>
             <div className="search-block">
-              <input type="text" className="search-element" onChange={this.changeSearch} value={notes.note.search} placeholder="Search element"/>
+              <input
+                  type="text"
+                  className="search-element"
+                  onChange={this.changeSearch}
+                  value={notes.note.search}
+                  placeholder="Search element"
+                  disabled={notes.arr.length <= 0}
+              />
             </div>
           </div>
           <Notes

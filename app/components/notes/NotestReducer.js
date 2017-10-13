@@ -68,9 +68,12 @@ export default function notesReducer(state = initialState, action) {
       };
 
     case notesActionsType.FIND_NOTE:
-      console.log('Find');
+      //debugger;
       return {
         ...state,
+        arr: [...state.arr.filter(el => {
+          return el.title === action.payload
+        })]
       };
 
     default:

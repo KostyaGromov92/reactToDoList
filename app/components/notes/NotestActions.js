@@ -41,10 +41,10 @@ export function updateNoteFromForm(note) {
   }
 }
 
-export function findNote(note) {
+export function findNote(search) {
   return {
-    type: notesActionsType.UPDATE_NOTE_FROM_FORM,
-    payload: note,
+    type: notesActionsType.FIND_NOTE,
+    payload: search,
   }
 }
 
