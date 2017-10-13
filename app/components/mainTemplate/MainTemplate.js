@@ -22,6 +22,10 @@ class MainTemplate extends Component {
     this.props.notesActions.changeField('description', e.target.value);
   };
 
+  changeSearch = (e) => {
+    this.props.notesActions.changeField('search', e.target.value);
+  };
+
 
   addNote = () => {
 
@@ -85,6 +89,9 @@ class MainTemplate extends Component {
                   ? <button onClick={() => this.updateNoteFromForm(notes.note)} className="btn-save">Update note</button>
                   : <button onClick={this.addNote} className="btn-save">Add note</button>
               }
+            </div>
+            <div className="search-block">
+              <input type="text" className="search-element" onChange={this.changeSearch} value={notes.note.search} placeholder="Search element"/>
             </div>
           </div>
           <Notes

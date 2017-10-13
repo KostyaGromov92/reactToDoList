@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './notes.sass'
-import newid from '../../components/newid'
 
 const Notes = (props) => (
     <div className="wrapper-notes">

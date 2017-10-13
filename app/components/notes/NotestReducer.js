@@ -7,7 +7,8 @@ const initialState = {
   note : {
     id: null,
     title: '',
-    description: ''
+    description: '',
+    search: '',
   },
   arr: [],
   showUpdate: false,
@@ -64,6 +65,12 @@ export default function notesReducer(state = initialState, action) {
           return {...item};
         })],
         showUpdate: false,
+      };
+
+    case notesActionsType.FIND_NOTE:
+      console.log('Find');
+      return {
+        ...state,
       };
 
     default:

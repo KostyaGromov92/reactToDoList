@@ -1,15 +1,5 @@
 import {notesActionsType} from './NotesConstants';
 
-// export function addNewNote(data) {
-//   return (dispatch) => {
-//     return dispatch({
-//             type: notesActionsType.ADD_NEW_NOTE,
-//             payload: data,
-//           });
-//
-//   }
-// }
-
 export function addNewNote(data) {
   return {
     type: notesActionsType.ADD_NEW_NOTE,
@@ -51,5 +41,12 @@ export function updateNoteFromForm(note) {
   }
 }
 
+export function findNote(note) {
+  return {
+    type: notesActionsType.UPDATE_NOTE_FROM_FORM,
+    payload: note,
+  }
+}
 
-export default {addNewNote, clearForm, changeField, updateNote, deleteNote, updateNoteFromForm};
+
+export default {addNewNote, clearForm, changeField, updateNote, deleteNote, updateNoteFromForm, findNote};
