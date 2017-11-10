@@ -1,4 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+var webpack = require('webpack');
+
 const injectConfig = new HtmlWebpackPlugin({
   template: './index.html',
   filename: 'index.html',
@@ -19,5 +21,10 @@ module.exports = {
       { test: /\.sass$/, loaders: ['style-loader', 'css-loader', 'sass-loader'], exclude: /node_modules/ }
     ]
   },
-  plugins: [injectConfig]
+  plugins: [
+      injectConfig,
+      new webpack.LoaderOptionsPlugin({
+        debug: true
+      })
+  ]
 };

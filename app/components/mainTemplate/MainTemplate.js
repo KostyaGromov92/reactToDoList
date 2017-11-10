@@ -4,12 +4,17 @@ import { bindActionCreators } from 'redux';
 import Notes from '../notes/Notes'
 import './main-style.sass'
 import * as notesAction from '../notes/NotestActions';
+import { Form, Text } from 'react-form';
 
 
 class MainTemplate extends Component {
 
   constructor(props) {
     super(props);
+
+    this.state = {
+      arr: []
+    }
   }
 
 
@@ -19,7 +24,7 @@ class MainTemplate extends Component {
   };
 
   changeDescription = (e) => {
-    this.props.notesActions.changeField('description', e.target.value);
+    this.props.notesActions.changeField('body', e.target.value);
   };
 
   changeSearch = (e) => {
@@ -34,8 +39,8 @@ class MainTemplate extends Component {
 
     const {notes, notesActions} = this.props;
 
-    if(notes.note.title !== '' && notes.note.description !== '') {
-      notesActions.addNewNote({title: notes.note.title, description: notes.note.description});
+    if(notes.note.title !== '' && notes.note.body !== '') {
+      notesActions.addNewNote({title: notes.note.title, body: notes.note.body});
 
       notesActions.clearForm();
 
@@ -51,7 +56,7 @@ class MainTemplate extends Component {
   updateNote = (id) => {
     const {notesActions} = this.props;
 
-    notesActions.updateNote(id);
+    notesActions.updateNote(id, this.props.notes.arr);
   };
 
   updateNoteFromForm = (note) => {
@@ -62,9 +67,18 @@ class MainTemplate extends Component {
     notesActions.clearForm();
   };
 
+  componentDidMount() {
+
+    const {notesActions} = this.props;
+
+    notesActions.getNotesRequest();
+  }
+
   render() {
 
     const {notes} = this.props;
+
+    console.log(notes);
 
     return (
         <div>
@@ -83,7 +97,7 @@ class MainTemplate extends Component {
                   name="description"
                   className="task-description"
                   onChange={this.changeDescription}
-                  value={notes.note.description}
+                  value={notes.note.body}
                   placeholder="Please enter note description"
               />
             </div>

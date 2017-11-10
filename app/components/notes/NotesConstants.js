@@ -10,5 +10,8 @@ export const notesActionsType = keyMirror(
       UPDATE_NOTE: null,
       UPDATE_NOTE_FROM_FORM: null,
       FIND_NOTE: null,
+      GET_NOTES_REQUEST: null,
+      NOTES_REQUEST_ERROR: null,
+      GET_NOTES_SUCCESS: null,
     },
 );

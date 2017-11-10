@@ -7,7 +7,7 @@ const initialState = {
   note : {
     id: null,
     title: '',
-    description: '',
+    body: '',
     search: '',
   },
   arr: [],
@@ -17,7 +17,21 @@ const initialState = {
 
 export default function notesReducer(state = initialState, action) {
   switch (action.type) {
+
+    case notesActionsType.GET_NOTES_SUCCESS:
+      return {
+        ...state,
+        arr: action.payload.arr
+      };
+
+    case notesActionsType.NOTES_REQUEST_ERROR:
+      return {
+        ...state,
+        arr: state.arr
+      };
+
     case notesActionsType.ADD_NEW_NOTE:
+      debugger;
       return {
           ...state,
           arr: [...state.arr.concat({...action.payload, id : newid(state.arr)})],
@@ -51,7 +65,7 @@ export default function notesReducer(state = initialState, action) {
     case notesActionsType.UPDATE_NOTE:
       return {
         ...state,
-        note: state.arr.find(item => item.id === action.payload),
+        note: action.array.find(item => item.id === action.noteId),
         showUpdate: true,
       };
 

@@ -7,6 +7,28 @@ export function addNewNote(data) {
   }
 }
 
+export function getNotesRequest(data) {
+  return {
+    type: notesActionsType.GET_NOTES_REQUEST,
+    payload: data,
+  };
+}
+
+export function getNotesSuccess(data) {
+  return {
+    type: notesActionsType.GET_NOTES_SUCCESS,
+    payload: data,
+  };
+}
+
+export function getNotesRequestError(errors) {
+  return {
+    type: notesActionsType.NOTES_REQUEST_ERROR,
+    error: true,
+    payload: errors,
+  };
+}
+
 export function changeField(fieldName, value) {
   return {
     type: notesActionsType.CHANGE_FIELD_NAME,
@@ -27,10 +49,11 @@ export function deleteNote(noteId) {
   }
 }
 
-export function updateNote(noteId) {
+export function updateNote(noteId, array) {
   return {
     type: notesActionsType.UPDATE_NOTE,
-    payload: noteId
+    noteId,
+    array
   }
 }
 

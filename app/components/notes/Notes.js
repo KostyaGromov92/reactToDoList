@@ -9,7 +9,7 @@ const Notes = (props) => (
             <div key={index} className="notes-item">
               <h4 className="notes-title">{item.title}</h4>
               <div className="notes-text">
-                {item.description}
+                {item.body}
               </div>
               <div className="notes-edit">
                 <button onClick={() => props.onClickDelete(item.id)} className="btn-delete-note">Delete</button>
